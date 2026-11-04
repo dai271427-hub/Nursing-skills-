@@ -1,0 +1,665 @@
+<title>جواز المهارات التمريضية</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@400;600;700&display=swap">
+<style>
+/* Layout: a lavender welcome screen with the project title, then an app shell (icon sidebar on desktop, bottom icon bar on phones) that opens five separate screens: home, library, skill detail, quiz, awards, progress. */
+:root{
+  --bg:#EFE9FB; --glow1:#D9CCF7; --glow2:#F7E6F4;
+  --card:rgba(255,255,255,.76); --card-s:#FFFFFF;
+  --ink:#2A2147; --muted:#675F8C; --line:#DDD3F1;
+  --brand:#6B56C4; --brand-d:#4E3CA3; --brand-ink:#FFFFFF; --accent:#B8A6EE;
+  --side:#7C6BBA; --side-d:#6652A8; --side-ink:#FFFFFF;
+  --ok:#2A8F63; --warn:#A8650A; --alert:#C23B3B; --gold:#F0B13A;
+  --tip1:#7461C6; --tip2:#5A47AE;
+  --l1:#A8650A; --l2:#6B56C4; --l3:#2A8F63;
+  --c-em:#D2446C; --c-med:#6B56C4; --c-vit:#17859A; --c-inf:#2A8F63; --c-pro:#3567CC; --c-com:#B8700F;
+  --shadow:0 8px 28px rgba(86,64,160,.13);
+  --f-head:'Readex Pro','IBM Plex Sans Arabic',Tahoma,'Segoe UI',sans-serif;
+  --f-body:'IBM Plex Sans Arabic',system-ui,'Segoe UI',Tahoma,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+  --f-script:'Aref Ruqaa','Readex Pro',serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#150F26; --glow1:#2B2058; --glow2:#34173F;
+    --card:rgba(44,34,78,.72); --card-s:#2A2150;
+    --ink:#EEE9FF; --muted:#ADA3D3; --line:#3E3468;
+    --brand:#A794F2; --brand-d:#C9BCFA; --brand-ink:#1A1233; --accent:#8F7BE0;
+    --side:#3A2E70; --side-d:#2A2152; --side-ink:#FFFFFF;
+    --ok:#5FD3A0; --warn:#EDB550; --alert:#FF8F8F; --gold:#F0B13A;
+    --tip1:#4A3A92; --tip2:#382B77;
+    --l1:#EDB550; --l2:#A794F2; --l3:#5FD3A0;
+    --c-em:#FF7FA1; --c-med:#A794F2; --c-vit:#4FCBE0; --c-inf:#5FD3A0; --c-pro:#7EA6FF; --c-com:#F0B867;
+    --shadow:0 8px 28px rgba(0,0,0,.35);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#150F26; --glow1:#2B2058; --glow2:#34173F;
+  --card:rgba(44,34,78,.72); --card-s:#2A2150;
+  --ink:#EEE9FF; --muted:#ADA3D3; --line:#3E3468;
+  --brand:#A794F2; --brand-d:#C9BCFA; --brand-ink:#1A1233; --accent:#8F7BE0;
+  --side:#3A2E70; --side-d:#2A2152; --side-ink:#FFFFFF;
+  --ok:#5FD3A0; --warn:#EDB550; --alert:#FF8F8F; --gold:#F0B13A;
+  --tip1:#4A3A92; --tip2:#382B77;
+  --l1:#EDB550; --l2:#A794F2; --l3:#5FD3A0;
+  --c-em:#FF7FA1; --c-med:#A794F2; --c-vit:#4FCBE0; --c-inf:#5FD3A0; --c-pro:#7EA6FF; --c-com:#F0B867;
+  --shadow:0 8px 28px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.75 var(--f-body)}
+.stage{background:radial-gradient(900px 520px at 90% -8%,var(--glow1),transparent 62%),radial-gradient(760px 520px at 0% 105%,var(--glow2),transparent 62%)}
+.wrap{max-width:1180px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.i{flex-shrink:0}
+.flip{transform:scaleX(-1)}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.en{font-family:var(--f-mono);font-size:.82em;color:var(--muted);unicode-bidi:isolate}
+.mut{color:var(--muted);margin:0}
+h2.h3{font:600 18px/1.4 var(--f-head);margin:0 0 6px}
+
+/* shared parts */
+.card{background:var(--card);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow);min-width:0}
+.ibub{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;flex-shrink:0;background:color-mix(in srgb,var(--c,var(--brand)) 16%,var(--card-s));color:var(--c,var(--brand))}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--brand);background:var(--brand);color:var(--brand-ink);border-radius:14px;padding:10px 22px;font-weight:600;text-decoration:none}
+.btn:hover{filter:brightness(1.06)}
+.btn.big{padding:13px 30px;font-size:17px}
+.btn.ghost{background:transparent;color:var(--brand)}
+.btn.danger{border-color:var(--alert);background:var(--alert);color:#fff}
+.btn.dghost{background:transparent;color:var(--alert);border-color:var(--alert)}
+.btn.sm{padding:5px 14px;font-size:14px;border-radius:10px}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 15px;font-size:14px}
+.chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.pill{font-size:12.5px;padding:2px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.pill.l1{color:var(--l1);border-color:var(--l1)} .pill.l2{color:var(--l2);border-color:var(--l2)} .pill.l3{color:var(--l3);border-color:var(--l3)}
+.flag{font-size:12px;padding:1px 10px;border-radius:999px;background:color-mix(in srgb,var(--alert) 14%,transparent);color:var(--alert);white-space:nowrap}
+
+/* welcome */
+.welcome{padding-block:clamp(24px,5vw,56px) 40px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:32px;align-items:center}
+.w-brand{display:flex;align-items:center;gap:12px;margin-bottom:22px;font:600 17px/1.4 var(--f-head);color:var(--brand-d)}
+.w-brand small{display:block;font:400 13px var(--f-body);color:var(--muted)}
+.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(145deg,var(--accent),var(--brand));color:#fff;display:grid;place-items:center;box-shadow:var(--shadow);flex-shrink:0}
+.w-title{font:700 clamp(34px,7.2vw,68px)/1.2 var(--f-head);margin:0;text-wrap:balance}
+.w-title em{font-style:normal;color:var(--brand)}
+.w-en{font:500 clamp(13px,2.4vw,17px) var(--f-mono);color:var(--muted);letter-spacing:.1em;margin:10px 0 0}
+.script{display:inline-block;font:700 clamp(26px,4.6vw,36px)/1.3 var(--f-script);color:var(--brand);transform:rotate(-2deg);margin:14px 0 6px}
+.w-lead{max-width:46ch;margin:0;color:var(--muted);font-size:17px}
+.start{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-top:26px}
+.start label{display:flex;flex-direction:column;gap:4px;font-size:14px;color:var(--muted);flex:1 1 180px;max-width:260px}
+.inp{border:1px solid var(--line);background:var(--card-s);color:var(--ink);border-radius:14px;padding:11px 16px;font:inherit;width:100%;min-width:0}
+.w-art{display:grid;place-items:center;min-height:280px}
+.w-entries{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.w-entries h2{grid-column:1/-1;font:600 16px var(--f-head);color:var(--muted);margin:4px 0 0}
+.entry{display:flex;gap:14px;align-items:center;padding:16px;border-radius:20px;background:var(--card);border:1px solid var(--line);text-decoration:none;box-shadow:var(--shadow);transition:transform .15s}
+.entry:hover{transform:translateY(-2px)}
+.entry b{display:block;font:600 16px var(--f-head)}
+.entry span.mut{font-size:14px}
+@media (max-width:820px){.welcome{grid-template-columns:minmax(0,1fr)}.w-art{min-height:0;order:2}.w-art svg{max-width:240px}}
+
+/* shell */
+.shell{display:grid;grid-template-columns:224px minmax(0,1fr);gap:22px;padding-block:20px 28px;align-items:start}
+.side{position:sticky;top:calc(20px + env(safe-area-inset-top,0px));background:linear-gradient(180deg,var(--side),var(--side-d));color:var(--side-ink);border-radius:26px;padding:20px 14px;display:flex;flex-direction:column;gap:18px;box-shadow:var(--shadow)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;padding:0 6px}
+.brand .logo{width:42px;height:42px;border-radius:14px;background:rgba(255,255,255,.2);box-shadow:none}
+.brand b{display:block;font:600 16px/1.3 var(--f-head)}
+.brand small{display:block;font:400 10.5px var(--f-mono);opacity:.8;letter-spacing:.04em}
+.nav{display:flex;flex-direction:column;gap:4px}
+.nav a{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:15px;text-decoration:none;font-weight:500;color:var(--side-ink)}
+.nav a:hover{background:rgba(255,255,255,.12)}
+.nav a[aria-current="page"]{background:rgba(255,255,255,.24);font-weight:600}
+.side-note{background:rgba(255,255,255,.14);border-radius:18px;padding:14px;font-size:14px;display:flex;flex-direction:column;gap:2px}
+.side-note b{font:700 17px var(--f-script)}
+.main{min-width:0}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.top h1{font:700 clamp(24px,4.6vw,34px)/1.35 var(--f-head);margin:0;text-wrap:balance}
+.lead{margin:4px 0 0;color:var(--muted)}
+.back{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--brand);font-weight:600;margin-bottom:10px}
+.foot{margin:28px 0 0;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+@media (max-width:820px){
+  .shell{grid-template-columns:minmax(0,1fr);padding-bottom:108px}
+  .side{position:fixed;top:auto;bottom:0;left:0;right:0;z-index:30;flex-direction:row;border-radius:22px 22px 0 0;padding:8px max(8px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));gap:2px}
+  .brand,.side-note{display:none}
+  .nav{flex-direction:row;flex:1;gap:2px}
+  .nav a{flex:1;flex-direction:column;gap:2px;padding:7px 2px;font-size:11.5px;text-align:center;min-width:0;justify-content:center}
+}
+
+/* home */
+.g-stats{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:14px;margin-bottom:14px}
+.prog{display:flex;align-items:center;gap:18px}
+.ring{--p:0;width:104px;aspect-ratio:1;flex-shrink:0;border-radius:50%;display:grid;place-items:center;position:relative;background:conic-gradient(var(--brand) calc(var(--p)*1%),var(--line) 0)}
+.ring::before{content:"";position:absolute;inset:11px;border-radius:50%;background:var(--card-s)}
+.ring b{position:relative;font:700 24px var(--f-head);font-variant-numeric:tabular-nums}
+.stat{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:start;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow)}
+.stat:hover{transform:translateY(-2px)}
+.num{font:700 34px/1 var(--f-mono);font-variant-numeric:tabular-nums}
+.g2{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px;margin-bottom:14px}
+.journey{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:6px;align-items:start;margin-top:14px}
+.step{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px}
+.step .ibub{width:56px;height:56px;border-radius:18px}
+.step b{font:600 15px var(--f-head)}
+.jarrow{color:var(--accent);align-self:center;margin-top:-26px}
+.cont-row{display:flex;align-items:center;gap:14px;margin:12px 0 16px}
+.tip{background:linear-gradient(140deg,var(--tip1),var(--tip2));color:#fff;border-radius:22px;padding:22px;position:relative;overflow:hidden;box-shadow:var(--shadow);min-width:0}
+.tip h2{font:600 18px var(--f-head);margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.tip p{margin:0 0 4px;font-size:17px;position:relative}
+.tip small{opacity:.8;position:relative}
+.tip .btn{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.4);color:#fff;margin-top:12px;position:relative}
+.tip svg.deco{position:absolute;left:-10px;bottom:-6px;width:60%;opacity:.28}
+.quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.qk{display:flex;align-items:center;gap:12px;padding:14px;border-radius:18px;background:var(--card);border:1px solid var(--line);text-decoration:none;font-weight:600}
+.qk:hover{transform:translateY(-2px)}
+.sec{font:600 18px var(--f-head);margin:22px 0 10px}
+@media (max-width:820px){
+  .g-stats{grid-template-columns:repeat(3,minmax(0,1fr))}.prog{grid-column:1/-1}
+  .g2{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){
+  .journey{grid-template-columns:1fr 1fr}.jarrow{display:none}.journey .step{padding:6px 0}
+  .stat{padding:14px}.num{font-size:28px}
+}
+
+/* library */
+.search{position:relative;max-width:460px;margin-bottom:14px}
+.search .i{position:absolute;inset-inline-start:14px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.search input{width:100%;border:1px solid var(--line);background:var(--card-s);color:var(--ink);border-radius:16px;padding:12px 16px;padding-inline-start:44px;font:inherit}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin-top:6px}
+.scard{display:flex;flex-direction:column;gap:3px;padding:16px;border-radius:20px;background:var(--card);border:1px solid var(--line);text-decoration:none;box-shadow:var(--shadow);min-width:0;transition:transform .15s}
+.scard:hover{transform:translateY(-2px)}
+.sc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.sname{font:600 16px/1.5 var(--f-head)}
+.sen{font:400 11.5px var(--f-mono);color:var(--muted);direction:ltr;text-align:right;overflow-wrap:anywhere}
+.pips{display:flex;gap:4px;margin:10px 0 6px}
+.pips i{height:5px;flex:1;border-radius:3px;background:var(--line)}
+.pips i.on.l1{background:var(--l1)} .pips i.on.l2{background:var(--l2)} .pips i.on.l3{background:var(--l3)}
+.go{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--brand);font-size:14px}
+.empty{grid-column:1/-1;color:var(--muted);padding:24px 0}
+
+/* skill detail */
+.sv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin-bottom:14px}
+.sv-hero{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.sv-hero .ibub{width:60px;height:60px;border-radius:20px}
+.cl{list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:10px}
+.cl li{display:flex;gap:10px;align-items:center}
+.tick{width:24px;height:24px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;color:#fff;flex-shrink:0}
+.cl li.on .tick{background:var(--ok);border-color:var(--ok)}
+.steps{counter-reset:s;list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:10px}
+.steps li{counter-increment:s;display:flex;gap:12px;align-items:flex-start}
+.steps li::before{content:counter(s);flex-shrink:0;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--brand) 16%,var(--card-s));color:var(--brand);font:500 13px var(--f-mono)}
+.steps.chk li::before{content:"";background:color-mix(in srgb,var(--ok) 20%,var(--card-s));box-shadow:inset 0 0 0 6px color-mix(in srgb,var(--ok) 20%,var(--card-s)),inset 0 0 0 20px var(--ok)}
+.warnl{list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:8px}
+.warnl li{display:flex;gap:10px;align-items:flex-start}
+.warnl .i{color:var(--alert);margin-top:4px}
+.lvls{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.lvl{border:1px solid var(--line);background:var(--card-s);border-radius:14px;padding:10px 6px;font-size:14px;line-height:1.35}
+.lvl[aria-pressed="true"].l0{background:var(--line)}
+.lvl[aria-pressed="true"].l1{background:var(--l1);border-color:var(--l1);color:#fff}
+.lvl[aria-pressed="true"].l2{background:var(--l2);border-color:var(--l2);color:var(--brand-ink)}
+.lvl[aria-pressed="true"].l3{background:var(--l3);border-color:var(--l3);color:#fff}
+.note{font-size:13.5px;color:var(--muted);margin:10px 0 0}
+.prevnext{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:6px}
+.prevnext a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--brand);font-weight:600}
+@media (max-width:820px){.sv{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.lvls{grid-template-columns:repeat(2,1fr)}}
+
+/* quiz */
+.qprog{display:flex;justify-content:space-between;font:500 13px var(--f-mono);color:var(--muted);margin-bottom:8px;font-variant-numeric:tabular-nums}
+.bar{height:7px;background:var(--line);border-radius:4px;overflow:hidden;margin-bottom:18px}
+.bar i{display:block;height:100%;background:var(--brand);border-radius:4px}
+.qtag{display:inline-block;font-size:13px;color:var(--muted);margin-bottom:6px}
+.qtext{font:600 19px/1.7 var(--f-head);margin:0 0 14px;text-wrap:balance}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:start;border:1px solid var(--line);background:var(--card-s);border-radius:14px;padding:11px 14px;width:100%}
+.opt b{font:600 14px var(--f-head);color:var(--brand);min-width:1.4em}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 16%,var(--card-s))}
+.opt.wrong{border-color:var(--alert);background:color-mix(in srgb,var(--alert) 14%,var(--card-s))}
+.why{margin-top:14px;padding:12px 14px;border-radius:14px;background:color-mix(in srgb,var(--brand) 11%,transparent);font-size:15px}
+.why strong.ok{color:var(--ok)} .why strong.no{color:var(--alert)}
+.score{font:700 clamp(44px,10vw,64px)/1 var(--f-mono);font-variant-numeric:tabular-nums;margin:6px 0 4px}
+.score small{font-size:.4em;color:var(--muted)}
+.field{margin:16px 0 8px;font-weight:600;font-size:15px}
+.wrong-list{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-direction:column;gap:8px}
+.wrong-list li{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border:1px solid var(--line);border-radius:14px;padding:8px 14px;background:var(--card-s)}
+
+/* awards */
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.badge{text-align:center;padding:22px 14px}
+.medal{width:76px;height:76px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;background:var(--line);color:var(--muted)}
+.badge.got .medal{background:linear-gradient(145deg,#FFE29A,var(--gold));color:#5B3B00;box-shadow:0 8px 18px rgba(240,177,58,.4)}
+.badge b{display:block;font:600 16px var(--f-head)}
+.badge p{margin:4px 0 8px;font-size:14px;color:var(--muted)}
+.badge .cnt{font:500 13px var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.badge.got .cnt{color:var(--ok)}
+
+/* progress */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:18px;background:var(--card-s)}
+table{border-collapse:collapse;width:100%;min-width:460px}
+th,td{padding:11px 16px;text-align:start;border-bottom:1px solid var(--line)}
+th{font-weight:600;font-size:14px;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.copybox{width:100%;min-height:150px;margin-top:12px;border:1px solid var(--line);border-radius:14px;background:var(--card-s);color:var(--ink);font:14px/1.7 var(--f-body);padding:12px}
+.hint{color:var(--muted);font-size:14px;margin:8px 0 0}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:10px 20px;border-radius:999px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:50;max-width:calc(100% - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (max-width:820px){.toast{bottom:calc(96px + env(safe-area-inset-bottom,0px))}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="stage" dir="rtl" lang="ar">
+  <div id="app"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</div>
+
+<script>
+(function(){
+var CATS=[
+ {id:'em',ar:'الإنعاش والطوارئ',en:'Emergency'},
+ {id:'med',ar:'إعطاء الدواء',en:'Medication'},
+ {id:'vit',ar:'التقييم والعلامات الحيوية',en:'Assessment'},
+ {id:'inf',ar:'مكافحة العدوى',en:'Infection control'},
+ {id:'pro',ar:'الإجراءات التمريضية',en:'Procedures'},
+ {id:'com',ar:'التواصل والتوثيق',en:'Communication'}
+];
+var SK=[
+{id:'cpr',cat:'em',ar:'الإنعاش القلبي الرئوي للبالغين',en:'Adult CPR (BLS)',
+ steps:['تأكد أن المكان آمن لك وللمريض.','هزّ كتفيه وناده بصوت عالٍ، وتحقق من التنفس.','اطلب المساعدة وفعّل نظام الطوارئ، واطلب جهاز AED.','تحسس النبض السباتي مدة لا تزيد على 10 ثوانٍ.','ابدأ الضغطات على منتصف الصدر بعمق 5–6 سم ومعدل 100–120 ضغطة في الدقيقة، مع ترك الصدر يرتد بالكامل.','أعطِ نفسين بعد كل 30 ضغطة إذا كنت مدرباً على ذلك.','شغّل جهاز AED فور وصوله واتبع تعليماته.','بدّل مع منقذ آخر كل دقيقتين تقريباً.'],
+ watch:['اجعل التوقف بين الضغطات أقل من 10 ثوانٍ.','ضع المريض على سطح صلب؛ السرير اللين يضعف الضغطات.','ضع كعب اليد على النصف السفلي من عظمة القص، لا على الأضلاع.'],
+ q:[{t:'ما معدل ضغطات الصدر الصحيح للبالغ؟',o:['60–80 في الدقيقة','100–120 في الدقيقة','130–150 في الدقيقة','80–100 في الدقيقة'],a:1,w:'المعدل الموصى به 100–120 ضغطة في الدقيقة بعمق 5–6 سم.'},
+    {t:'ما نسبة الضغطات إلى النفسين لمنقذ واحد يعمل على بالغ؟',o:['15:2','30:2','5:1','30:1'],a:1,w:'النسبة 30 ضغطة ثم نفسان.'}]},
+{id:'aed',cat:'em',ar:'استخدام جهاز AED',en:'Automated External Defibrillator',
+ steps:['شغّل الجهاز واتبع التعليمات الصوتية.','جفف صدر المريض وأزل أي لصقة دوائية من موضع الوسادة.','ضع الوسادتين: واحدة أعلى يمين الصدر والأخرى أسفل الإبط الأيسر.','اطلب من الجميع الابتعاد أثناء تحليل النظم.','تأكد أن أحداً لا يلمس المريض ثم اضغط زر الصدمة عند الطلب.','استأنف الضغطات فوراً بعد الصدمة.'],
+ watch:['لا تضع الوسادة فوق جهاز مزروع تحت الجلد؛ ضعها بعيداً عنه.','أبعد مصادر الأكسجين المفتوحة عن مكان الصدمة.','جفف الصدر إن كان مبللاً قبل وضع الوسادتين.'],
+ q:[{t:'متى تستأنف ضغطات الصدر بعد إعطاء الصدمة؟',o:['فوراً','بعد دقيقة','بعد فحص النبض 30 ثانية','لا تُستأنف'],a:0,w:'تُستأنف الضغطات فوراً دون فحص النبض، ويعيد الجهاز التحليل بعد نحو دقيقتين.'}]},
+{id:'choke',cat:'em',ar:'انسداد مجرى الهواء بجسم غريب',en:'Choking (Heimlich)',
+ steps:['اسأل "هل تختنق؟"؛ إن لم يستطع الكلام أو السعال فالانسداد شديد.','قف خلف المريض ولف ذراعيك حول خصره.','ضع قبضتك فوق السرة وتحت عظمة القص، وأمسكها بيدك الأخرى.','اضغط بقوة نحو الداخل والأعلى.','كرر الضغطات حتى يخرج الجسم أو يفقد المريض وعيه، ثم ابدأ الإنعاش.'],
+ watch:['إن كان المريض يسعل بقوة فشجّعه على السعال ولا تتدخل.','للحامل أو المصاب بسمنة شديدة استخدم ضغطات الصدر بدل البطن.'],
+ q:[{t:'أين تضع قبضة اليد عند إجراء ضغطات البطن؟',o:['فوق السرة وتحت عظمة القص','على عظمة القص','تحت السرة','على الأضلاع السفلية'],a:0,w:'القبضة فوق السرة وتحت عظمة القص، والضغط نحو الداخل والأعلى.'}]},
+
+{id:'rights',cat:'med',kind:'check',ar:'حقوق الدواء العشرة',en:'The 10 Rights of Medication',
+ steps:['المريض الصحيح','الدواء الصحيح','الجرعة الصحيحة','الطريق الصحيح','الوقت الصحيح','التوثيق الصحيح','السبب الصحيح (الاستطباب)','الاستجابة الصحيحة','التثقيف الصحيح للمريض','حق المريض في رفض الدواء'],
+ watch:['طابق الدواء مع السجل ثلاث مرات: عند أخذه من مكان الحفظ، وعند تجهيزه، وعند إعطائه.','وثّق بعد الإعطاء مباشرة لا قبله.','قيّم استجابة المريض بعد الإعطاء وأبلغ عن أي أثر جانبي.'],
+ q:[{t:'متى توثّق إعطاء الدواء؟',o:['قبل الإعطاء','بعد الإعطاء مباشرة','في نهاية الوردية','عند طلب الطبيب'],a:1,w:'يُوثَّق بعد الإعطاء مباشرة حتى لا يتكرر الدواء بالخطأ.'},
+    {t:'مريض يرفض أخذ الدواء. ما التصرف الصحيح؟',o:['أعطيه الدواء مع الطعام دون علمه','أحترم الرفض وأبلغ الطبيب والمسؤول وأوثّق السبب','أترك الدواء بجانبه','أسجل أنه أخذه'],a:1,w:'للمريض حق الرفض، ودورك أن تبلغ وتوثّق وتشرح له أثر الرفض.'}]},
+{id:'patid',cat:'med',ar:'التعرّف على المريض وفحص الحساسية',en:'Patient ID & Allergy Check',
+ steps:['اطلب من المريض ذكر اسمه الكامل وتاريخ ميلاده.','طابق البيانات مع سوار المعصم وسجل إعطاء الدواء (MAR).','اسأل عن الحساسية وراجع السجل وسوار الحساسية.','اسأل عن أي دواء أو مكمل جديد يتناوله.','اشرح الدواء وسببه قبل إعطائه.'],
+ watch:['لا تعتمد على رقم الغرفة أو السرير كمعرّف.','لا تنطق الاسم وتنتظر "نعم"؛ اطلب من المريض أن يقوله بنفسه.','إن كان المريض غير واعٍ فاعتمد السوار وبيانات السجل.'],
+ q:[{t:'أي مما يلي لا يُعتمد كمعرّف للمريض؟',o:['الاسم الكامل','تاريخ الميلاد','رقم الغرفة','رقم الملف الطبي'],a:2,w:'رقم الغرفة أو السرير يتغير، فلا يصلح معرّفاً.'}]},
+{id:'dose',cat:'med',ar:'حساب جرعات الدواء',en:'Dosage Calculation',
+ steps:['وحّد الوحدات (مغ، مكغ، مل) قبل الحساب.','طبّق القاعدة: الجرعة المطلوبة ÷ التركيز المتوفر × الكمية المتوفرة.','راجع النتيجة: هل هي معقولة سريرياً؟','اطلب من زميل التحقق من الحساب في الأدوية عالية الخطورة.'],
+ watch:['اكتب صفراً قبل الفاصلة (0.5) ولا تكتب صفراً بعدها (5.0) كي لا تُقرأ 50.','لا تستخدم الاختصارات غير المعتمدة.'],
+ q:[{t:'المطلوب 500 مغ، والمتوفر 250 مغ في كل 5 مل. كم مل تعطي؟',o:['2.5 مل','5 مل','10 مل','20 مل'],a:2,w:'500 ÷ 250 × 5 = 10 مل.'},
+    {t:'الجرعة المطلوبة 0.1 مغ لكل كغ لمريض وزنه 20 كغ. كم الجرعة الكلية؟',o:['0.2 مغ','2 مغ','20 مغ','0.02 مغ'],a:1,w:'0.1 × 20 = 2 مغ.'}]},
+{id:'inj',cat:'med',ar:'الحقن العضلي والتحت جلدي',en:'IM & SC Injection',
+ steps:['اغسل يديك وارتدِ القفازات بعد التحقق من حقوق الدواء.','اختر الموضع: عضلي (الألوية البطنية، الدالية، الفخذ الوحشي)، تحت جلدي (البطن، أعلى الذراع، الفخذ).','نظّف الجلد بمسحة كحول واتركه يجف.','العضلي بزاوية 90 درجة، والتحت جلدي بين 45 و90 درجة حسب سماكة الدهون وطول الإبرة.','ادفع الدواء بثبات ثم اسحب الإبرة.','ضع الإبرة في حاوية الأدوات الحادة دون إعادة تغطيتها.'],
+ watch:['بدّل مواضع الحقن المتكررة (مثل الأنسولين) لتجنب تغيرات الجلد والدهون.','لا تُعد تغطية الإبرة بعد الاستخدام.'],
+ q:[{t:'ما زاوية إدخال الإبرة في الحقن العضلي؟',o:['15 درجة','45 درجة','90 درجة','10 درجات'],a:2,w:'الحقن العضلي يتم بزاوية 90 درجة.'}]},
+{id:'ivmed',cat:'med',ar:'الأدوية والمحاليل الوريدية',en:'IV Medication & Fluids',
+ steps:['تحقق من حقوق الدواء ومن اسم المحلول وتاريخ انتهائه.','افحص الكيس والمحلول: اللون، العكارة، التسرب.','افحص موضع القنية: احمرار، تورم، ألم، دفء.','عقّم المنفذ بمسحة كحول واتركه يجف.','اضبط معدل التسريب في المضخة أو القطّارة.','راقب المريض والموضع خلال التسريب ووثّق.'],
+ watch:['عند ظهور تورم أو ألم أو تسرب حول القنية أوقف التسريب فوراً.','لا تعطِ دواءً وريدياً من محلول عكر.','استخدم المضخة للأدوية عالية الخطورة حسب البروتوكول.'],
+ q:[{t:'لاحظت تورماً وألماً حول القنية أثناء التسريب. ما أول إجراء؟',o:['أرفع معدل التسريب','أوقف التسريب وأقيّم الموضع وأبلغ المسؤول','أكمل التسريب وأراقب لاحقاً','أضع كمادة باردة وأكمل'],a:1,w:'هذه علامات تسرب أو التهاب وريد، فيُوقف التسريب ويُقيَّم الموضع.'}]},
+
+{id:'vitals',cat:'vit',ar:'قياس العلامات الحيوية',en:'Vital Signs',
+ steps:['عرّف بنفسك وتحقق من هوية المريض واشرح الإجراء.','دع المريض يرتاح 5 دقائق إن أمكن.','النبض: عدّ لمدة 60 ثانية إن كان غير منتظم.','التنفس: عدّه لمدة 60 ثانية دون أن ينتبه المريض.','ضغط الدم: اختر كفة بالحجم المناسب واجعل الذراع بمستوى القلب.','أكسجة الدم (SpO2): استخدم إصبعاً نظيفاً بلا طلاء أظافر.','الحرارة: استخدم الجهاز والموضع المعتمدين، ثم وثّق كل القراءات.'],
+ watch:['القيم الطبيعية للبالغ: النبض 60–100، التنفس 12–20، الضغط أقل من 120/80، SpO2 95٪ فأكثر، الحرارة 36.1–37.2 م°.','كفة أصغر من اللازم ترفع القراءة، وكفة أكبر من اللازم تخفضها.'],
+ q:[{t:'ما معدل النبض الطبيعي للبالغ في الراحة؟',o:['40–60','60–100','100–120','120–140'],a:1,w:'المعدل الطبيعي 60–100 نبضة في الدقيقة.'},
+    {t:'أي كفة تعطي قراءة ضغط أعلى من الحقيقية؟',o:['كفة أصغر من اللازم','كفة أكبر من اللازم','كفة بالحجم الصحيح','لا تأثير للكفة'],a:0,w:'الكفة الضيقة ترفع القراءة بشكل كاذب.'}]},
+{id:'glu',cat:'vit',ar:'قياس سكر الدم بالوخز',en:'Capillary Blood Glucose',
+ steps:['اغسل يديك وارتدِ القفازات.','تأكد من الجهاز والشريط وتاريخ انتهائه.','نظّف إصبع المريض واتركه يجف.','اوخز جانب رأس الإصبع لا منتصفه.','اجعل قطرة الدم تلمس الشريط.','سجّل القيمة وتصرف حسب البروتوكول، ثم تخلص من الوخّاز في حاوية الأدوات الحادة.'],
+ watch:['الكحول الذي لم يجف يغيّر القراءة.','إن كانت القيمة منخفضة جداً أو مرتفعة جداً فأبلغ المسؤول فوراً.'],
+ q:[{t:'أين يكون الوخز في الإصبع؟',o:['منتصف رأس الإصبع','جانب رأس الإصبع','مفصل الإصبع','قاعدة الإصبع'],a:1,w:'الجانب أقل ألماً وأغنى بالشعيرات الدموية.'}]},
+{id:'gcs',cat:'vit',ar:'تقييم الوعي بمقياس غلاسكو',en:'Glasgow Coma Scale',
+ steps:['قيّم فتح العينين (1–4).','قيّم الاستجابة الكلامية (1–5).','قيّم الاستجابة الحركية (1–6).','اجمع الدرجات الثلاث ووثّق كل عنصر على حدة.'],
+ watch:['المجموع من 3 إلى 15، والدرجة 8 أو أقل تعني إصابة شديدة.','كرر التقييم بانتظام لاكتشاف أي تدهور.'],
+ q:[{t:'ما أعلى درجة في مقياس غلاسكو؟',o:['10','12','15','20'],a:2,w:'4 + 5 + 6 = 15.'}]},
+
+{id:'hand',cat:'inf',kind:'check',ar:'نظافة اليدين',en:'Hand Hygiene (5 Moments)',
+ steps:['قبل ملامسة المريض.','قبل إجراء نظيف أو عقيم.','بعد التعرض لسوائل الجسم.','بعد ملامسة المريض.','بعد ملامسة محيط المريض.'],
+ watch:['فرك اليدين بالمطهر الكحولي يستغرق 20–30 ثانية.','الغسل بالماء والصابون يستغرق 40–60 ثانية، ويُفضّل عند اتساخ اليدين ظاهرياً أو عند الاشتباه بالمطثية العسيرة.','لا ترتدِ خواتم أو أظافر اصطناعية أثناء العمل السريري.'],
+ q:[{t:'كم تستغرق مدة فرك اليدين بالمطهر الكحولي؟',o:['5–10 ثوانٍ','20–30 ثانية','دقيقتان','ثانيتان'],a:1,w:'فرك اليدين بالكحول يستغرق 20–30 ثانية.'},
+    {t:'متى يُفضّل الماء والصابون على المطهر الكحولي؟',o:['عند اتساخ اليدين ظاهرياً','دائماً','أبداً','قبل ملامسة المريض فقط'],a:0,w:'الاتساخ الظاهر يتطلب الغسل بالماء والصابون.'}]},
+{id:'ppe',cat:'inf',ar:'ارتداء معدات الوقاية وخلعها',en:'PPE Donning & Doffing',
+ steps:['الارتداء: العباءة، ثم الكمامة، ثم واقي العين أو الوجه، ثم القفازات.','تأكد أن القفازات تغطي أطراف الكمّين قبل الدخول.','الخلع: القفازات أولاً.','ثم واقي العين أو الوجه.','ثم العباءة.','ثم الكمامة بعد الخروج من الغرفة.','اغسل يديك مباشرة بعد الخلع.'],
+ watch:['لا تلمس السطح الخارجي الملوث بيدك العارية.','اخلع القفازات بقلبها من الداخل.'],
+ q:[{t:'ما أول قطعة تُخلع عند نزع معدات الوقاية؟',o:['الكمامة','القفازات','العباءة','واقي العين'],a:1,w:'القفازات هي الأكثر تلوثاً فتُخلع أولاً.'}]},
+{id:'sharps',cat:'inf',ar:'التخلص من الأدوات الحادة والنفايات',en:'Sharps & Waste Disposal',
+ steps:['ضع الإبرة في حاوية مقاومة للثقب فور الاستخدام.','لا تُعد تغطية الإبرة ولا تنزعها بيدك.','أبقِ الحاوية قريبة من مكان الإجراء.','أغلق الحاوية عند امتلائها إلى ثلاثة أرباعها.','افصل النفايات الطبية الخطرة عن العادية حسب نظام الألوان في منشأتك.'],
+ watch:['عند وخزة بإبرة ملوثة: اغسل الموضع بالماء والصابون، وأبلغ المسؤول فوراً، واتبع بروتوكول التعرض.'],
+ q:[{t:'إلى أي حد تُملأ حاوية الأدوات الحادة؟',o:['حتى الحافة','ثلاثة أرباعها','نصفها فقط','ربعها'],a:1,w:'تُغلق عند امتلائها إلى ثلاثة أرباعها لتجنب الوخز.'}]},
+
+{id:'piv',cat:'pro',ar:'تركيب القنية الوريدية الطرفية',en:'Peripheral IV Cannulation',
+ steps:['عرّف بنفسك، تحقق من هوية المريض، اشرح الإجراء وخذ موافقته.','جهّز المعدات واغسل يديك.','ضع العاصبة 10–15 سم فوق الموضع واختر وريداً سليماً.','طهّر الجلد واتركه يجف تماماً دون لمسه.','شدّ الجلد وأدخل القنية والشطبة لأعلى بزاوية نحو 10–30 درجة.','عند ظهور الدم في الغرفة أنزل الزاوية وتقدّم بالقنية ثم اسحب الإبرة.','فك العاصبة، وصل الموصل، واشطف بمحلول ملحي.','ثبّت بضمادة شفافة، وسجّل التاريخ والوقت ووثّق.'],
+ watch:['ابدأ من الأوردة البعيدة ثم تدرّج إلى الأقرب.','تجنب ذراع المريض الذي أُزيلت عقده الليمفاوية أو الذي لديه ناسور غسيل كلى.','إن فشلت محاولتان فاطلب مساعدة زميل أكثر خبرة.'],
+ q:[{t:'ماذا تفعل بعد تطهير الجلد قبل إدخال القنية؟',o:['أدخل فوراً','أنتظر حتى يجف المطهّر','أمسحه بقطن جاف','ألمس الموضع للتحقق'],a:1,w:'المطهّر يحتاج إلى الجفاف ليؤدي عمله.'},
+    {t:'ماذا يعني ظهور الدم في غرفة القنية؟',o:['طرف القنية داخل وعاء دموي','القنية انسدت','القنية خرجت من الوريد','لا دلالة لذلك'],a:0,w:'ظهور الدم (flashback) يدل على أن طرف القنية داخل وعاء دموي.'}]},
+{id:'wound',cat:'pro',ar:'العناية بالجروح وتغيير الضماد',en:'Wound Care & Dressing',
+ steps:['اغسل يديك وجهّز المعدات واشرح الإجراء.','أزل الضماد القديم بلطف بقفازات نظيفة.','قيّم الجرح: الحجم، الإفرازات، الرائحة، لون الجلد حوله.','بدّل القفازات وطهّر يديك.','نظّف بالمحلول الملحي من الأنظف إلى الأقل نظافة، من المركز إلى الخارج في الجروح الجراحية.','ضع الضماد المناسب وثبّته.','وثّق وصف الجرح وما قمت به.'],
+ watch:['ازدياد الاحمرار أو الحرارة أو الرائحة الكريهة أو القيح علامات عدوى تُبلَّغ.','استخدم تقنية عقيمة في الجروح الجراحية حديثة العهد.'],
+ q:[{t:'ما اتجاه تنظيف الجرح الجراحي؟',o:['من الخارج إلى المركز','من الأنظف إلى الأقل نظافة (من المركز إلى الخارج)','بحركة دائرية عشوائية','لا فرق'],a:1,w:'ننظف من الأنظف إلى الأقل نظافة حتى لا ننقل التلوث إلى الجرح.'}]},
+{id:'foley',cat:'pro',ar:'قسطرة المثانة البولية',en:'Urinary Catheterization',
+ steps:['تأكد من وجود أمر طبي وحاجة سريرية، وحافظ على الخصوصية.','اشرح الإجراء وضع المريض في الوضعية المناسبة.','افتح الطقم العقيم وارتدِ قفازات عقيمة.','نظّف منطقة فتحة الإحليل بالمحلول المعتمد.','زلّق القسطرة وأدخلها بلطف حتى يظهر البول، ثم تقدّم 2.5–5 سم إضافية.','انفخ البالون بالكمية المكتوبة على القسطرة، ثم اسحب برفق حتى تثبت.','صل بكيس الجمع وثبّت القسطرة على الجسم.'],
+ watch:['لا تنفخ البالون قبل ظهور البول.','أبقِ الكيس تحت مستوى المثانة ولا تدعه يلمس الأرض.','قيّم الحاجة إلى القسطرة يومياً وأزلها بأسرع وقت ممكن لتقليل العدوى.'],
+ q:[{t:'أين يوضع كيس جمع البول؟',o:['فوق مستوى المثانة','تحت مستوى المثانة','على الأرض','لا فرق'],a:1,w:'تحت مستوى المثانة حتى لا يرجع البول إليها.'}]},
+{id:'ng',cat:'pro',ar:'التغذية عبر الأنبوب الأنفي المعدي',en:'NG Tube Feeding',
+ steps:['تحقق من الأمر الطبي ونوع التغذية وتاريخ انتهائها.','ارفع رأس السرير 30–45 درجة.','تأكد من موضع الأنبوب حسب سياسة المنشأة.','اشطف الأنبوب بالماء قبل التغذية.','أعطِ التغذية ببطء بالمحقنة أو بالمضخة.','اشطف الأنبوب بعد التغذية وأبقِ رأس السرير مرتفعاً 30–60 دقيقة.'],
+ watch:['أوقف التغذية فوراً عند السعال أو ضيق النفس أو القيء وأبلغ المسؤول.','لا تعتمد على سماع فقاعات الهواء للتأكد من موضع الأنبوب.'],
+ q:[{t:'ما وضعية رأس المريض أثناء التغذية الأنفية المعدية؟',o:['مسطح تماماً','مرفوع 30–45 درجة','أخفض من القدمين','على الجانب دون رفع'],a:1,w:'رفع الرأس يقلل خطر استنشاق المحتويات إلى الرئة.'}]},
+{id:'move',cat:'pro',ar:'تحريك المريض ومنع قرحات الضغط',en:'Positioning & Pressure Injury Prevention',
+ steps:['قيّم خطر القرحات وافحص الجلد فوق النتوءات العظمية.','غيّر وضعية المريض طريح الفراش كل ساعتين أو حسب الخطة.','ارفع الكعبين وضع وسادة بين الركبتين عند الاستلقاء الجانبي.','استخدم ملاءة السحب أو أجهزة الرفع بدل الجر.','حافظ على الجلد نظيفاً وجافاً ووثّق التقييم.'],
+ watch:['اثنِ ركبتيك واجعل ظهرك مستقيماً عند الرفع.','الجر على السرير يسبب احتكاكاً وتمزقاً في الجلد.'],
+ q:[{t:'كل كم يُغيَّر وضع المريض طريح الفراش عادةً؟',o:['كل 6 ساعات','كل ساعتين','مرة كل يوم','كل 30 دقيقة'],a:1,w:'التغيير كل ساعتين يخفف الضغط المستمر على الجلد.'}]},
+
+{id:'sbar',cat:'com',ar:'التسليم والتبليغ بطريقة SBAR',en:'SBAR Handover',
+ steps:['Situation: اذكر اسم المريض ومشكلته الحالية.','Background: اذكر التاريخ المرضي والتشخيص والعلاج.','Assessment: اذكر العلامات الحيوية وتقييمك للحالة.','Recommendation: اذكر ما تطلبه أو تقترحه.'],
+ watch:['جهّز العلامات الحيوية والسجل قبل الاتصال.','كرر الأوامر الشفهية واطلب تأكيدها.'],
+ q:[{t:'ماذا يمثل حرف A في SBAR؟',o:['Action','Assessment','Advice','Admission'],a:1,w:'S: Situation، B: Background، A: Assessment، R: Recommendation.'}]},
+{id:'doc',cat:'com',ar:'التوثيق التمريضي',en:'Nursing Documentation',
+ steps:['وثّق في وقت الإجراء أو بعده مباشرة.','اكتب وقائع موضوعية تشمل ما رأيته وما فعلته.','اذكر التاريخ والوقت واسمك وتوقيعك.','وثّق استجابة المريض وأي تثقيف قدّمته.','صحّح الخطأ بخط واحد مع كلمة "خطأ" والتاريخ والتوقيع.'],
+ watch:['لا تستخدم المصحح الأبيض ولا تمحُ.','لا توثّق إجراءً لم تنفذه ولا إجراءً نفذه غيرك.','استخدم المختصرات المعتمدة فقط.'],
+ q:[{t:'كيف تُصحَّح الكتابة الخاطئة في السجل الورقي؟',o:['بمصحح أبيض','بشطبها بخط واحد وكتابة "خطأ" مع التوقيع','بمحوها','بالكتابة فوقها'],a:1,w:'يبقى الخطأ مقروءاً ويُوقَّع التصحيح ليكون السجل قانونياً.'}]}
+];
+
+var LV=['لم أبدأ','فهمت النظرية','تدربت عملياً','أتقنتها'];
+var LET=['أ','ب','ج','د'];
+var N=SK.length;
+var byId={};SK.forEach(function(s){byId[s.id]=s});
+var CATIC={em:'heart',med:'pill',vit:'thermo',inf:'shield',pro:'cross',com:'chat'};
+var NAV=[['home','الرئيسية','home'],['library','المهارات','library'],['quiz','اختبر نفسك','quiz'],['awards','الإنجازات','awards'],['progress','تقدّمي','progress']];
+var IC={
+ home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/>',
+ library:'<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',
+ quiz:'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 13l2 2 4-4"/>',
+ awards:'<path d="M8 21h8M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3"/>',
+ progress:'<path d="M4 20h16M7 16v-5M12 16V6M17 16v-8"/>',
+ heart:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/><path d="M7.5 12.5h2l1.4-2.4 2.2 4.8 1.4-2.4h2"/>',
+ pill:'<path d="M10.5 20.5a4.95 4.95 0 0 1-7-7l9-9a4.95 4.95 0 0 1 7 7z"/><path d="M8.5 8.5l7 7"/>',
+ thermo:'<path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0z"/>',
+ shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',
+ cross:'<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/>',
+ chat:'<path d="M21 12a8 8 0 0 1-11.5 7.2L4 21l1.8-5A8 8 0 1 1 21 12z"/>',
+ arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+ check:'<path d="M5 12l5 5 9-10"/>',
+ star:'<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>',
+ bulb:'<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3z"/>',
+ book:'<path d="M4 19V5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2 2 2 0 0 0 2 2h14"/>',
+ activity:'<path d="M3 12h4l3-8 4 16 3-8h4"/>',
+ refresh:'<path d="M4 4v6h6"/><path d="M20 20v-6h-6"/><path d="M5.6 15A8 8 0 0 0 19.9 13.5M18.4 9A8 8 0 0 0 4.1 10.5"/>',
+ award:'<circle cx="12" cy="9" r="6"/><path d="M8.5 14.5L7 22l5-3 5 3-1.5-7.5"/>',
+ lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+ search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
+ warn:'<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/>'
+};
+function ic(n,s,cls){s=s||22;return '<svg class="i'+(cls?' '+cls:'')+'" width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+IC[n]+'</svg>'}
+function bub(cat,n,s){return '<span class="ibub" style="--c:var(--c-'+cat+')">'+ic(n||CATIC[cat],s||24)+'</span>'}
+function sbub(color,n,s){return '<span class="ibub" style="--c:var('+color+')">'+ic(n,s||24)+'</span>'}
+function $(s){return document.querySelector(s)}
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+/* state */
+var S={name:'',lvl:{},qr:{},best:0,seen:{}};
+try{var raw=localStorage.getItem('nsp-v1');if(raw){var pr=JSON.parse(raw);if(pr&&typeof pr==='object'){S.name=typeof pr.name==='string'?pr.name:'';S.lvl=pr.lvl||{};S.qr=pr.qr||{};S.best=+pr.best||0;S.seen=pr.seen||{};}}}catch(e){}
+function save(){try{localStorage.setItem('nsp-v1',JSON.stringify(S))}catch(e){}}
+function lv(id){return S.lvl[id]||0}
+function counts(){var c=[0,0,0,0];SK.forEach(function(s){c[lv(s.id)]++});return c}
+function readiness(){var t=0;SK.forEach(function(s){t+=lv(s.id)});return Math.round(t/(3*N)*100)}
+function wrongSet(){var w={};SK.forEach(function(s){s.q.forEach(function(_,i){if(S.qr[s.id+':'+i]===0)w[s.id]=1})});return w}
+function qstat(s){var a=0,r=0;s.q.forEach(function(_,i){var v=S.qr[s.id+':'+i];if(v!==undefined){a++;if(v)r++}});return a?('آخر اختبار: '+r+' من '+s.q.length+' صحيحة'):'لم تُختبر في هذه المهارة بعد.'}
+
+var libCat='all',libStatus='all',libQ='',tipIdx=Math.floor(Date.now()/864e5),resetAsk=false,copyFail=null,lastKey='',cur={v:'welcome'};
+var Q={phase:'setup',scope:'all',count:10,list:[],i:0,sel:null,score:0};
+var TIPS=[];SK.forEach(function(s){s.watch.forEach(function(w){TIPS.push({t:w,s:s.ar})})});
+
+/* badges */
+function catM(cat){var l=SK.filter(function(s){return s.cat===cat});return[l.filter(function(s){return lv(s.id)===3}).length,l.length]}
+var BADGES=[
+ {id:'first',ar:'البداية',d:'حدّد مستواك في أول مهارة',ic:'star',f:function(){return[SK.filter(function(s){return lv(s.id)>0}).length,1]}},
+ {id:'star5',ar:'نجم المهارات',d:'أتقن 5 مهارات',ic:'award',f:function(){return[counts()[3],5]}},
+ {id:'cpr',ar:'بطل الإنعاش',d:'أتقن كل مهارات الإنعاش والطوارئ',ic:'heart',f:function(){return catM('em')}},
+ {id:'med',ar:'أمان الدواء',d:'أتقن كل مهارات إعطاء الدواء',ic:'pill',f:function(){return catM('med')}},
+ {id:'inf',ar:'حارس العدوى',d:'أتقن كل مهارات مكافحة العدوى',ic:'shield',f:function(){return catM('inf')}},
+ {id:'quiz',ar:'المتفوّق',d:'احصل على 90٪ فأكثر في اختبار من 5 أسئلة أو أكثر',ic:'quiz',f:function(){return[S.best>=90?1:0,1]}},
+ {id:'ask',ar:'المثابر',d:'أجب عن 20 سؤالاً مختلفاً',ic:'activity',f:function(){return[Math.min(Object.keys(S.qr).length,20),20]}},
+ {id:'all',ar:'خريج المهارات',d:'أتقن جميع المهارات',ic:'trophy',f:function(){return[counts()[3],N]}}
+];
+IC.trophy=IC.awards;
+var tt=null;
+function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('on')},3800)}
+function checkBadges(silent){
+  var ch=false;
+  BADGES.forEach(function(b){var r=b.f();if(r[0]>=r[1]&&!S.seen[b.id]){S.seen[b.id]=1;ch=true;if(!silent)toast('إنجاز جديد: '+b.ar)}});
+  if(ch)save();
+}
+
+/* art */
+function sp(x,y,k){return '<path transform="translate('+x+' '+y+') scale('+k+')" d="M0-12 3-3 12 0 3 3 0 12-3 3-12 0-3-3z" style="fill:var(--accent)"/>'}
+function art(){return '<svg viewBox="0 0 320 340" width="100%" style="max-width:340px" role="img" aria-label="سماعة طبية على شكل قلب">'+
+ '<defs><linearGradient id="tg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--accent)"/><stop offset="1" style="stop-color:var(--brand)"/></linearGradient></defs>'+
+ '<path d="M160 222C98 178 92 118 128 112c18-3 29 10 32 22 3-12 14-25 32-22 36 6 30 66-32 110z" style="fill:var(--accent);opacity:.22"/>'+
+ '<path d="M120 166h20l8-16 12 34 10-22 6 4h24" fill="none" style="stroke:var(--brand)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>'+
+ '<path d="M92 52C66 124 98 180 160 204M228 52C254 124 222 180 160 204" fill="none" stroke="url(#tg)" stroke-width="11" stroke-linecap="round"/>'+
+ '<path d="M160 204V240C160 280 214 268 222 296" fill="none" stroke="url(#tg)" stroke-width="11" stroke-linecap="round"/>'+
+ '<circle cx="92" cy="40" r="11" style="fill:var(--brand-d)"/><circle cx="228" cy="40" r="11" style="fill:var(--brand-d)"/><circle cx="160" cy="204" r="9" style="fill:var(--brand-d)"/>'+
+ '<circle cx="222" cy="304" r="26" style="fill:var(--brand)"/><circle cx="222" cy="304" r="14" style="fill:var(--card-s)"/><circle cx="222" cy="304" r="6" style="fill:var(--accent)"/>'+
+ sp(40,150,1)+sp(284,118,1.3)+sp(60,292,.8)+sp(292,228,.7)+'</svg>'}
+
+/* welcome */
+function welcomeView(){
+  var ents=[['home','لوحة المعلومات','تابع تقدمك'],['library','مكتبة المهارات',N+' مهارة'],['quiz','اختبر نفسك',pool('all').length+' سؤالاً'],['awards','الإنجازات',BADGES.length+' أوسمة']];
+  return '<section class="welcome wrap"><div>'+
+   '<div class="w-brand"><span class="logo">'+ic('heart',26)+'</span><span><small>من إعداد</small>نادي التمريض الطلابي · جامعة حفر الباطن</span></div>'+
+   '<h1 class="w-title">جواز المهارات <em>التمريضية</em></h1>'+
+   '<p class="w-en"><span dir="ltr">Nursing Skills Passport</span></p>'+
+   '<div class="script">تعلّم · تدرّب · تميّز</div>'+
+   '<p class="w-lead">كل مهارة يجب أن تتقنها قبل التخرج، من الإنعاش إلى إعطاء الدواء، في مكان واحد تقيس فيه تعلمك وتتابع تقدمك.</p>'+
+   '<div class="start"><label for="nm">ما اسمك؟ (اختياري)<input class="inp" id="nm" maxlength="24" autocomplete="off" value="'+esc(S.name)+'"></label><button type="button" class="btn big" data-act="start">ابدأ رحلتك '+ic('arrow',20,'flip')+'</button></div>'+
+   '</div><div class="w-art">'+art()+'</div>'+
+   '<div class="w-entries"><h2>أو ادخل مباشرة إلى</h2>'+ents.map(function(e){return '<a class="entry" href="#'+e[0]+'"><span class="ibub">'+ic(e[0],24)+'</span><span><b>'+e[1]+'</b><span class="mut">'+e[2]+'</span></span></a>'}).join('')+'</div></section>';
+}
+
+/* shell */
+function sideHTML(active){
+  var c3=counts()[3];
+  return '<aside class="side"><a class="brand" href="#welcome"><span class="logo">'+ic('heart',24)+'</span><span><b>جواز المهارات</b><small>Nursing Skills Passport</small></span></a>'+
+   '<nav class="nav" aria-label="الأقسام">'+NAV.map(function(n){return '<a href="#'+n[0]+'"'+(active===n[0]?' aria-current="page"':'')+'>'+ic(n[2],22)+'<span>'+n[1]+'</span></a>'}).join('')+'</nav>'+
+   '<div class="side-note"><b>واصل التقدم</b><span>'+c3+' من '+N+' مهارة متقنة</span></div></aside>';
+}
+var FOOT='<p class="foot"><b>من إعداد نادي التمريض الطلابي، جامعة حفر الباطن.</b> هذا الموقع للمراجعة الذاتية ولا يغني عن التدريب العملي تحت إشراف. عند اختلاف الخطوات عن بروتوكولات كليتك أو مستشفاك، اتبع البروتوكول المعتمد لديهم. يُحفظ تقدمك في هذا المتصفح على هذا الجهاز فقط.</p>';
+
+/* home */
+function nextSkill(){
+  var a=SK.filter(function(s){return lv(s.id)>0&&lv(s.id)<3})[0];
+  return a||SK.filter(function(s){return lv(s.id)===0})[0]||null;
+}
+function tipHTML(){var t=TIPS[tipIdx%TIPS.length];return '<p>'+esc(t.t)+'</p><small>من مهارة: '+esc(t.s)+'</small>'}
+function homeView(){
+  var c=counts(),pct=readiness(),wn=Object.keys(wrongSet()).length,nm=S.name||'أيها النجم',nx=nextSkill();
+  var msg=pct===0?'ابدأ بتحديد مستواك في أي مهارة.':pct<40?'بداية جيدة، واصل التقدم.':pct<80?'أنت في منتصف الطريق.':pct<100?'اقتربت من الهدف!':'أتممت جواز المهارات!';
+  var steps=[['book','دراسة',c[1],'--l1'],['activity','تدريب',c[2],'--l2'],['refresh','مراجعة',wn,'--alert'],['award','إتقان',c[3],'--l3']];
+  var jr=steps.map(function(s,i){return (i?'<span class="jarrow">'+ic('arrow',20,'flip')+'</span>':'')+'<div class="step">'+sbub(s[3],s[0],26)+'<b>'+s[1]+'</b><span class="mut">'+s[2]+' مهارة</span></div>'}).join('');
+  var cont=nx?'<div class="card"><h2 class="h3">تابع من حيث توقفت</h2><div class="cont-row">'+bub(nx.cat)+'<div><b>'+esc(nx.ar)+'</b><br><span class="en">'+esc(nx.en)+'</span></div></div><a class="btn" href="#skill-'+nx.id+'">'+(lv(nx.id)?'تابع':'ابدأ')+'</a></div>':'<div class="card"><h2 class="h3">أحسنت</h2><p class="mut">أتقنت جميع المهارات. راجع الإنجازات أو أعد الاختبار لتثبّت معلوماتك.</p></div>';
+  var quick=[['library','مكتبة المهارات'],['quiz','اختبر نفسك'],['awards','الإنجازات'],['progress','تقدّمي']].map(function(q){return '<a class="qk" href="#'+q[0]+'"><span class="ibub">'+ic(q[0],22)+'</span>'+q[1]+'</a>'}).join('');
+  return '<header class="top"><div><h1>مرحباً، '+esc(nm)+'</h1><p class="lead">تابع مهاراتك وابنِ رحلتك نحو التخرج.</p></div></header>'+
+   '<div class="g-stats"><div class="card prog"><div class="ring" style="--p:'+pct+'"><b>'+pct+'٪</b></div><div><h2 class="h3">جاهزيتك العامة</h2><p class="mut">'+msg+'</p></div></div>'+
+   '<button type="button" class="stat" data-stat="done">'+sbub('--ok','check')+'<span class="num">'+c[3]+'</span><span class="mut">متقنة</span></button>'+
+   '<button type="button" class="stat" data-stat="prog">'+sbub('--l2','activity')+'<span class="num">'+(c[1]+c[2])+'</span><span class="mut">قيد التعلم</span></button>'+
+   '<button type="button" class="stat" data-stat="review">'+sbub('--alert','refresh')+'<span class="num">'+wn+'</span><span class="mut">للمراجعة</span></button></div>'+
+   '<div class="g2"><div class="card"><h2 class="h3">رحلة مهاراتك</h2><p class="mut">كل مهارة تمر بالدراسة ثم التدريب ثم الإتقان، وتعود للمراجعة عند الخطأ.</p><div class="journey">'+jr+'</div></div>'+
+   '<div class="tip"><h2>'+ic('bulb',22)+'نصيحة اليوم</h2><div id="tipbody">'+tipHTML()+'</div><button type="button" class="btn sm" data-act="tip">نصيحة أخرى</button><svg class="deco" viewBox="0 0 200 60" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M0 32h50l10-22 14 44 14-30 8 8h104"/></svg></div></div>'+
+   '<div class="g2">'+cont+'<div class="card"><h2 class="h3">ادخل إلى</h2><div class="quick" style="margin-top:10px">'+quick+'</div></div></div>'+FOOT;
+}
+
+/* library */
+var STAT=[['all','الكل'],['new','لم أبدأ'],['prog','قيد التعلم'],['review','للمراجعة'],['done','متقنة']];
+function statusOk(s,w){var l=lv(s.id);return libStatus==='all'||(libStatus==='new'&&l===0)||(libStatus==='prog'&&l>0&&l<3)||(libStatus==='done'&&l===3)||(libStatus==='review'&&w[s.id])}
+function scard(s,w){
+  var l=lv(s.id),lab=l===0?'ابدأ':l===3?'أتقنتها':'تابع';
+  return '<a class="scard" href="#skill-'+s.id+'" style="--c:var(--c-'+s.cat+')"><div class="sc-top">'+bub(s.cat)+(w[s.id]?'<span class="flag">للمراجعة</span>':'')+'</div><span class="sname">'+esc(s.ar)+'</span><span class="sen">'+esc(s.en)+'</span><div class="pips" role="img" aria-label="'+LV[l]+'">'+[1,2,3].map(function(k){return '<i class="'+(l>=k?'on l'+l:'')+'"></i>'}).join('')+'</div><span class="go">'+lab+' '+ic('arrow',16,'flip')+'</span></a>';
+}
+function gridHTML(){
+  var w=wrongSet(),q=libQ.trim().toLowerCase();
+  var list=SK.filter(function(s){return(libCat==='all'||s.cat===libCat)&&(!q||s.ar.toLowerCase().indexOf(q)>=0||s.en.toLowerCase().indexOf(q)>=0)&&statusOk(s,w)});
+  return list.length?list.map(function(s){return scard(s,w)}).join(''):'<p class="empty">لا توجد مهارات مطابقة. جرّب تغيير البحث أو التصنيف.</p>';
+}
+function libraryView(){
+  var cats=[{id:'all',ar:'كل التصنيفات'}].concat(CATS);
+  return '<header class="top"><div><h1>مكتبة المهارات</h1><p class="lead">استعرض كل المهارات وافتح أي واحدة لتبدأ.</p></div></header>'+
+   '<div class="search">'+ic('search',20)+'<input id="q" type="search" placeholder="ابحث عن مهارة" aria-label="ابحث عن مهارة" value="'+esc(libQ)+'"></div>'+
+   '<div class="chips" role="group" aria-label="التصنيف">'+cats.map(function(c){return '<button type="button" class="chip" data-cat="'+c.id+'" aria-pressed="'+(libCat===c.id)+'">'+c.ar+'</button>'}).join('')+'</div>'+
+   '<div class="chips" role="group" aria-label="الحالة">'+STAT.map(function(c){return '<button type="button" class="chip" data-status="'+c[0]+'" aria-pressed="'+(libStatus===c[0])+'">'+c[1]+'</button>'}).join('')+'</div>'+
+   '<div class="grid" id="grid">'+gridHTML()+'</div>'+FOOT;
+}
+
+/* skill detail */
+function skillView(id){
+  var s=byId[id],l=lv(id),pct=Math.round(l/3*100),idx=SK.indexOf(s),chk=s.kind==='check';
+  var qdone=s.q.every(function(_,i){return S.qr[id+':'+i]===1});
+  var j=[[l>=1,'فهمت النظرية'],[l>=2,'تدربت عملياً'],[l>=3,'أتقنتها أمام المشرف'],[qdone,'أجبت عن أسئلة المهارة بشكل صحيح']];
+  var prev=SK[idx-1],next=SK[idx+1];
+  return '<a class="back" href="#library">'+ic('arrow',18)+'المكتبة</a>'+
+   '<header class="top"><div><h1>'+esc(s.ar)+'</h1><p class="lead"><span class="en">'+esc(s.en)+'</span></p></div><span class="pill l'+l+'">'+LV[l]+'</span></header>'+
+   '<div class="sv"><div class="card sv-hero" style="--c:var(--c-'+s.cat+')">'+bub(s.cat,null,30)+'<div class="ring" style="--p:'+pct+'"><b>'+pct+'٪</b></div><div><h2 class="h3">إتقانك لهذه المهارة</h2><p class="mut">'+qstat(s)+'</p><div class="row" style="margin-top:10px"><button type="button" class="btn sm" data-act="qskill" data-id="'+id+'">اختبر هذه المهارة</button></div></div></div>'+
+   '<div class="card"><h2 class="h3">رحلتك</h2><ul class="cl">'+j.map(function(x){return '<li class="'+(x[0]?'on':'')+'"><span class="tick">'+(x[0]?ic('check',14):'')+'</span>'+x[1]+'</li>'}).join('')+'</ul></div></div>'+
+   '<div class="card" style="margin-bottom:14px"><h2 class="h3">'+(chk?'نقاط التحقق':'الخطوات')+'</h2><ol class="steps'+(chk?' chk':'')+'">'+s.steps.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ol></div>'+
+   '<div class="card" style="margin-bottom:14px"><h2 class="h3">انتبه</h2><ul class="warnl">'+s.watch.map(function(x){return '<li>'+ic('warn',18)+'<span>'+esc(x)+'</span></li>'}).join('')+'</ul></div>'+
+   '<div class="card" style="margin-bottom:14px"><h2 class="h3">حدّد مستواك</h2><div class="lvls" role="group" aria-label="مستوى الإتقان">'+LV.map(function(n,i){return '<button type="button" class="lvl l'+i+'" data-set="'+id+'" data-n="'+i+'" aria-pressed="'+(l===i)+'">'+n+'</button>'}).join('')+'</div><p class="note">«أتقنتها» تعني أنك أديتها بشكل صحيح أمام المشرف أو المدرّب.</p></div>'+
+   '<nav class="prevnext" aria-label="المهارات المجاورة">'+(prev?'<a href="#skill-'+prev.id+'">'+ic('arrow',18)+esc(prev.ar)+'</a>':'<span></span>')+(next?'<a href="#skill-'+next.id+'">'+esc(next.ar)+ic('arrow',18,'flip')+'</a>':'<span></span>')+'</nav>'+FOOT;
+}
+
+/* quiz */
+function pool(scope){var out=[];SK.forEach(function(s){if(scope==='all'||s.cat===scope||scope==='skill:'+s.id)s.q.forEach(function(q,i){out.push({sid:s.id,qi:i,t:q.t,o:q.o,a:q.a,w:q.w})})});return out}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function startQuiz(){
+  var p=pool(Q.scope),n=Q.count==='all'?p.length:Math.min(+Q.count,p.length);
+  Q.list=shuffle(p).slice(0,n).map(function(x){x.order=shuffle([0,1,2,3]);x.ok=null;return x});
+  Q.i=0;Q.sel=null;Q.score=0;Q.phase='run';
+}
+function quizView(){
+  var head='<header class="top"><div><h1>اختبر نفسك</h1><p class="lead">أسئلة اختيار من متعدد مع تفسير بعد كل إجابة.</p></div></header>';
+  if(Q.phase==='setup'){
+    var total=pool(Q.scope).length;
+    var scopes=[{id:'all',ar:'كل المهارات'}];
+    if(Q.scope.indexOf('skill:')===0)scopes.push({id:Q.scope,ar:byId[Q.scope.slice(6)].ar});
+    scopes=scopes.concat(CATS);
+    return head+'<div class="card"><div class="field" style="margin-top:0">التصنيف</div><div class="chips">'+scopes.map(function(c){return '<button type="button" class="chip" data-qscope="'+c.id+'" aria-pressed="'+(Q.scope===c.id)+'">'+esc(c.ar)+'</button>'}).join('')+'</div>'+
+     '<div class="field">عدد الأسئلة</div><div class="chips">'+[5,10,'all'].map(function(n){return '<button type="button" class="chip" data-qcount="'+n+'" aria-pressed="'+(String(Q.count)===String(n))+'">'+(n==='all'?'كل الأسئلة':n+' أسئلة')+'</button>'}).join('')+'</div>'+
+     '<p class="hint">المتاح في هذا الاختيار: '+total+' سؤالاً.</p><div class="row"><button type="button" class="btn" data-act="qstart">ابدأ الاختبار</button></div></div>'+FOOT;
+  }
+  if(Q.phase==='run'){
+    var it=Q.list[Q.i],sk=byId[it.sid],done=Q.sel!==null;
+    var opts=it.order.map(function(oi,k){var cls='opt';if(done){if(oi===it.a)cls+=' right';else if(k===Q.sel)cls+=' wrong'}return '<button type="button" class="'+cls+'" data-opt="'+k+'"'+(done?' disabled':'')+'><b>'+LET[k]+'</b><span>'+esc(it.o[oi])+'</span></button>'}).join('');
+    var ok=done&&it.order[Q.sel]===it.a;
+    var why=done?'<div class="why"><strong class="'+(ok?'ok':'no')+'">'+(ok?'إجابة صحيحة. ':'إجابة غير صحيحة. ')+'</strong>'+esc(it.w)+'</div><div class="row"><button type="button" class="btn" data-act="qnext">'+(Q.i+1<Q.list.length?'السؤال التالي':'عرض النتيجة')+'</button></div>':'';
+    return head+'<div class="card"><div class="qprog"><span>'+(Q.i+1)+' / '+Q.list.length+'</span><span>الصحيحة: '+Q.score+'</span></div><div class="bar"><i style="width:'+(Q.i/Q.list.length*100)+'%"></i></div><span class="qtag">'+esc(sk.ar)+'</span><p class="qtext">'+esc(it.t)+'</p><div class="opts">'+opts+'</div>'+why+'</div>'+FOOT;
+  }
+  var wrong=Q.list.filter(function(x){return x.ok===false});
+  var pct=Math.round(Q.score/Q.list.length*100);
+  var msg=pct>=80?'مستوى ممتاز. تابع التدريب العملي على هذه المهارات.':pct>=50?'مستوى جيد. راجع المهارات أدناه ثم أعد المحاولة.':'تحتاج إلى مراجعة. ابدأ بالمهارات أدناه ثم أعد الاختبار.';
+  var seen={};
+  var wl=wrong.filter(function(x){if(seen[x.sid])return false;seen[x.sid]=1;return true}).map(function(x){return '<li><span>'+esc(byId[x.sid].ar)+'</span><a class="btn ghost sm" href="#skill-'+x.sid+'">راجع المهارة</a></li>'}).join('');
+  return head+'<div class="card"><h2 class="h3">نتيجتك</h2><div class="score">'+Q.score+'<small> / '+Q.list.length+'</small></div><p class="mut">'+msg+'</p>'+(wl?'<div class="field">مهارات تحتاج مراجعة</div><ul class="wrong-list">'+wl+'</ul>':'')+'<div class="row"><button type="button" class="btn" data-act="qagain">اختبار جديد</button></div></div>'+FOOT;
+}
+
+/* awards */
+function awardsView(){
+  var got=0;
+  var cards=BADGES.map(function(b){var r=b.f(),on=r[0]>=r[1];if(on)got++;return '<div class="card badge'+(on?' got':'')+'"><div class="medal">'+ic(on?b.ic:'lock',34)+'</div><b>'+b.ar+'</b><p>'+b.d+'</p><span class="cnt">'+(on?'تم الإنجاز':Math.min(r[0],r[1])+' / '+r[1])+'</span></div>'}).join('');
+  return '<header class="top"><div><h1>الإنجازات</h1><p class="lead">فتحت '+got+' من '+BADGES.length+' أوسمة. تعبك يثمر.</p></div></header><div class="badges">'+cards+'</div>'+FOOT;
+}
+
+/* progress */
+function summaryText(){
+  var c=counts(),t='جواز المهارات التمريضية — ملخص تقدمي\nالمهارات المتقنة: '+c[3]+' من '+N+'\nالجاهزية العامة: '+readiness()+'٪\n';
+  CATS.forEach(function(ct){var m=catM(ct.id);t+='\n'+ct.ar+': '+m[0]+' من '+m[1]+' متقنة'});
+  return t;
+}
+function reviewList(){
+  var out=[],w=wrongSet();
+  SK.forEach(function(s){if(w[s.id])out.push({s:s,why:'أخطأت في آخر اختبار'})});
+  SK.forEach(function(s){var l=lv(s.id);if(l>0&&l<3&&!w[s.id])out.push({s:s,why:LV[l]})});
+  return out.slice(0,8);
+}
+function progressView(){
+  var rows=CATS.map(function(ct){
+    var l=SK.filter(function(s){return s.cat===ct.id}),a=0,r=0;
+    l.forEach(function(s){s.q.forEach(function(_,i){var v=S.qr[s.id+':'+i];if(v!==undefined){a++;if(v)r++}})});
+    return '<tr><td>'+ct.ar+'</td><td class="n">'+l.length+'</td><td class="n">'+catM(ct.id)[0]+'</td><td class="n">'+(a?r+' / '+a:'—')+'</td></tr>';
+  }).join('');
+  var rv=reviewList();
+  var rl=rv.length?'<ul class="wrong-list">'+rv.map(function(o){return '<li><span>'+esc(o.s.ar)+' <span class="en">'+esc(o.why)+'</span></span><a class="btn ghost sm" href="#skill-'+o.s.id+'">افتح</a></li>'}).join('')+'</ul>':'<p class="hint">ستظهر هنا المهارات التي أخطأت فيها أو التي ما زالت قيد التعلم بعد أن تحدد مستواك وتجرّب الاختبار.</p>';
+  var reset=resetAsk?'<button type="button" class="btn danger" data-act="reset-yes">نعم، امسح كل تقدمي</button><button type="button" class="btn ghost" data-act="reset-no">إلغاء</button>':'<button type="button" class="btn dghost" data-act="reset">مسح تقدمي</button>';
+  return '<header class="top"><div><h1>تقدّمي</h1><p class="lead">ملخص حسب التصنيف وأولويات المراجعة.</p></div></header>'+
+   '<div class="tbl-wrap"><table><thead><tr><th>التصنيف</th><th>المهارات</th><th>المتقنة</th><th>آخر اختبار</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
+   '<h2 class="sec">أولويات المراجعة</h2>'+rl+
+   '<h2 class="sec">حفظ ومشاركة</h2><div class="row" style="margin-top:0"><button type="button" class="btn" data-act="copy">نسخ ملخص تقدمي</button>'+reset+'</div><p class="hint" id="copymsg"></p>'+
+   (copyFail?'<textarea class="copybox" id="copybox" readonly>'+esc(copyFail)+'</textarea>':'')+FOOT;
+}
+
+/* render + routing */
+function parse(){
+  var h=location.hash.replace('#','');
+  if(h.indexOf('skill-')===0&&byId[h.slice(6)])return{v:'skill',id:h.slice(6)};
+  if(['home','library','quiz','awards','progress'].indexOf(h)>=0)return{v:h};
+  return{v:'welcome'};
+}
+function render(){
+  var r=parse();cur=r;var app=$('#app'),key=r.v+(r.id||'');
+  if(r.v==='welcome'){app.innerHTML=welcomeView()}
+  else{
+    var body=r.v==='home'?homeView():r.v==='library'?libraryView():r.v==='skill'?skillView(r.id):r.v==='quiz'?quizView():r.v==='awards'?awardsView():progressView();
+    app.innerHTML='<div class="shell wrap">'+sideHTML(r.v==='skill'?'library':r.v)+'<main class="main" id="main">'+body+'</main></div>';
+  }
+  if(key!==lastKey){lastKey=key;try{window.scrollTo(0,0)}catch(e){}}
+  if(copyFail){var b=$('#copybox');if(b){b.focus();b.select()}}
+}
+function goto(h){if(location.hash==='#'+h)render();else location.hash=h}
+window.addEventListener('hashchange',render);
+
+function startApp(){var v=$('#nm');S.name=v?v.value.trim():S.name;save();goto('home')}
+
+var app=$('#app');
+app.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target&&e.target.id==='nm'){e.preventDefault();startApp()}});
+app.addEventListener('input',function(e){if(e.target&&e.target.id==='q'){libQ=e.target.value;var g=$('#grid');if(g)g.innerHTML=gridHTML()}});
+app.addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  var d=b.dataset;
+  if(d.set){S.lvl[d.set]=+d.n;save();render();checkBadges();return}
+  if(d.cat){libCat=d.cat;render();return}
+  if(d.status){libStatus=d.status;render();return}
+  if(d.stat){libStatus=d.stat;libCat='all';libQ='';goto('library');return}
+  if(d.qscope){Q.scope=d.qscope;render();return}
+  if(d.qcount){Q.count=d.qcount==='all'?'all':+d.qcount;render();return}
+  if(d.opt!==undefined&&Q.phase==='run'&&Q.sel===null){
+    var k=+d.opt,it=Q.list[Q.i];Q.sel=k;it.ok=(it.order[k]===it.a);
+    if(it.ok)Q.score++;
+    S.qr[it.sid+':'+it.qi]=it.ok?1:0;save();render();return;
+  }
+  var act=d.act;if(!act)return;
+  if(act==='start'){startApp()}
+  else if(act==='tip'){tipIdx++;var tb=$('#tipbody');if(tb)tb.innerHTML=tipHTML()}
+  else if(act==='qskill'){Q.scope='skill:'+d.id;Q.count='all';startQuiz();goto('quiz')}
+  else if(act==='qstart'){startQuiz();render()}
+  else if(act==='qnext'){
+    if(Q.i+1<Q.list.length){Q.i++;Q.sel=null}
+    else{Q.phase='done';var pc=Math.round(Q.score/Q.list.length*100);if(Q.list.length>=5&&pc>S.best){S.best=pc;save()}checkBadges()}
+    render();
+  }
+  else if(act==='qagain'){Q.phase='setup';render()}
+  else if(act==='copy'){
+    var txt=summaryText(),msg=$('#copymsg');
+    var fallback=function(){copyFail=txt;render();var m=$('#copymsg');if(m)m.textContent='انسخ النص المحدد يدوياً.'};
+    try{navigator.clipboard.writeText(txt).then(function(){copyFail=null;if(msg)msg.textContent='تم نسخ الملخص.'},fallback)}catch(err){fallback()}
+  }
+  else if(act==='reset'){resetAsk=true;render()}
+  else if(act==='reset-no'){resetAsk=false;render()}
+  else if(act==='reset-yes'){S={name:'',lvl:{},qr:{},best:0,seen:{}};save();resetAsk=false;copyFail=null;Q.phase='setup';render()}
+});
+checkBadges(true);
+render();
+})();
+</script>
